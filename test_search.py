@@ -21,7 +21,7 @@ def test_search_at_end():
     start = time.perf_counter()
     result = binary_search(data, data[-1])
     fastest = time.perf_counter() - start
-    assert result 
+    assert result
 
     start = time.perf_counter()
     result = linear_search(data, data[-1])
@@ -32,6 +32,7 @@ def test_search_at_end():
     start = time.perf_counter()
     result = jump_search(data, data[-1])
     fastest = time.perf_counter() - start
+
     assert result
     assert fastest * 10000 < slowest * 10000
 
@@ -84,3 +85,9 @@ def test_code_style():
     x = re.findall('[0-9]+', actual)[0]
     x = float(x)
     assert x >= expected
+
+
+test_search_at_end()
+test_search_at_beginning()
+test_search_at_middle()
+test_search_not_found()

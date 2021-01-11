@@ -42,23 +42,22 @@ def binary_search(lyst, target):
 """ Jump Search: Often used for sorted arrays: Searches the given array by dividing it in blocks and searching each 
 block one at a time in sequence. """
 def jump_search(lyst, target):
-    jump = math.sqrt(len(lyst))
+    jump = int(math.sqrt(len(lyst)))
     prev = 0
 
-    while lyst[int(min(jump, len(lyst))-1)] < target:
-        prev = jump
-        jump += math.sqrt(len(lyst))
-        if jump >= len(lyst):
-            return False
+    for i in range(0, len(lyst), jump):
+        if lyst[i] < target:
+            prev = i
+        elif lyst[i] == target:
+            return True
+        else:
+            break
 
-    while lyst[int(prev)] < target:
-        prev += 1
-
-        if prev == min(jump, len(lyst)):
-            return False
-
-    if lyst[int(jump)] == target:
-        return True
+    low = prev
+    for x in lyst[prev:]:
+        if x == target:
+            return True
+        low += 1
 
     return False
 
