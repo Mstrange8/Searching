@@ -82,7 +82,6 @@ def test_code_style():
     (pylint_stdout, pylint_stderr) = lint.py_run('search.py', return_std=True)
     expected = 8.5
     actual = pylint_stdout.getvalue()
-    print(actual)
     x = re.findall('[0-9]+', actual)[0]
     x = float(x)
     assert x >= expected
